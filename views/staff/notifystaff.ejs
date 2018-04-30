@@ -1,0 +1,176 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="/stylesheets/staff/style.css" rel="stylesheet" type="text/css" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<style>
+#body {
+background: url("/images/bg/banner1.jpg") no-repeat center fixed;
+background-size: 100% 100%!important;
+font-size: 16px;
+font-family: 'Lato', sans-serif;
+font-weight: 300;
+margin: 0;
+color: #666;
+opacity: 100%;
+}
+
+</style>
+
+<body>
+
+<div class="nav">
+    <nav class="navbar navbar-inverse col-md-12 "style="border-radius:0px;">
+        <ul class="nav navbar-nav">
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active"><a href="/staff"> &nbsp;Notifications</a></li>
+            <li><a href="/staffs/addward"> &nbsp;Register</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="col-md-4">
+    <div class="card bg-white no-border">
+        <div class="card-title">RECENT ACTIVITIES</div>
+        <ul class="notifications">
+            <li>
+                <ul class="notifications-list scrollstyle">
+                    <% var a= 0 %>
+                    <% formdata.forEach(function (t) { %>
+                    <% console.log(t)%>
+                    <li class="curser-pointer" id="list<%= a %>"><a>
+                            <div class="notification-ico">
+                                <div class="circle-icon bg-success text-white">
+                                    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <span class="notification-message">
+                                        <b style="text-transform: capitalize;"><%= t.username %> [<%= t.rollno %>]</b> requested for
+                                <% if(t.type == 'onduty'){%>
+                                On-Duty
+                                <% } %>
+                                <% if(t.type == 'leave') {%>
+                                Leave
+                                <% } %>
+                            </span>
+                            <span class="time">2s</span>
+                        </a></li>
+                    <% a++ %>
+                    <% }) %>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <% var x = 0,y = 0 %>
+    <% formdata.forEach(function (t) {  %>
+    <% console.log() %>
+    <% if(t.type == 'onduty') { %>
+    <% x++ %>
+    <% } %>
+    <% if(t.type == 'leave'){ %>
+    <% y++ %>
+    <% } %>
+    <% }) %>
+
+
+
+    <div class="row">
+        <div class="col-xs-6 col-sm-6">
+            <div class="card card-block bg-primary" style="border:none;color:white;">
+                <h6 class="margin-0">Leave Requests</h6>
+                <h1 class="margin-0"><%= y %></h1>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+            <div class="card card-block bg-primary" style="border:none;color:white;">
+                <h6 class="margin-0">On-Duty Requests</h6>
+                <h1 class="margin-0"><%= x %></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-7" style="border: 1px solid rgba(0,0,0,0.1);padding:10px;margin:0px 10px;">
+    <div class="request-review">
+        <center><h2>Request Review</h2></center>
+        <table class="table borderless">
+            <tbody>
+            <tr>
+                <td class="col-md-5">Student Name</td>
+                <td id="stdname" style="text-transform: capitalize;">: <%= formdata[0].username%></td>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td id="stdclass" style="text-transform: capitalize;">: <%= formdata[0].department%> - <%= formdata[0].class%></td>
+            </tr>
+            <tr>
+                <td>Leave Applied Date</td>
+                <td id="applieddate">:  <%= formdata[0].dateofapply%></td>
+            </tr>
+            <tr>
+                <td>Beginning of Leave Period</td>
+                <td id="from">:<%= formdata[0].from%></td>
+            </tr>
+            <tr>
+                <td>End of Leave Period</td>
+                <td id="to">: <%= formdata[0].to%></td>
+            </tr>
+            <tr>
+                <td>Days Involved</td>
+                <td id="daysinvolved">: <%= formdata[0].daysinvolved %></td>
+            </tr>
+            <tr>
+                <td>Days Availed</td>
+                <td id="daysavailed">: <%= formdata[0].daysavailed %></td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td id="reason">:<%= formdata[0].reason%></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td id="verified"><%= formdata[0].verified %></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="/staffs/decline/<%= formdata[0]._id %>" id="decline" class="btn btn-danger">Decline</a>
+        <%if(designation != 'hod'){ %>
+            <a href="/staffs/forward/<%= formdata[0]._id %>" id="forward" class="btn btn-info col-md-offset-3">Forward</a>
+        <% } %>
+        <a href="/staffs/accept/<%= formdata[0]._id %>" id="accept" class="col-md-offset-3 btn btn-success">Accept</a>
+
+    </div>
+</div>
+<% for(var i=0;i<formdata.length;i++) {%>
+<script>
+
+    $('#list<%= i %>').click(function () {
+        $('#stdname').html('<%= formdata[i].username %>');
+        $('#stdclass').html('<%= formdata[i].department %> - <%= formdata[i].class %>');
+        $('#applieddate').html('<%= formdata[i].dateofapply %>');
+        $('#from').html('<%= formdata[i].from %>');
+        $('#to').html('<%= formdata[i].to %>');
+        $('#daysinvolved').html('<%= formdata[i].daysinvolved %>');
+        $('#daysavailed').html('<%= formdata[i].daysavailed %>');
+        $('#reason').html('<%= formdata[i].reason%>');
+        $('#verified').html('<%= formdata[i].verified%>');
+        $('#accept').attr('href','/staffs/accept/<%= formdata[i]._id %>')
+        $('#forward').attr('href','/staffs/forward/<%= formdata[i]._id %>')
+        $('#decline').attr('href','/staffs/decline/<%= formdata[i]._id %>')
+    });
+
+
+</script>
+<% } %>
+</>
+</html>

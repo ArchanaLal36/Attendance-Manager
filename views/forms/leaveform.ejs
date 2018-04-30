@@ -1,0 +1,306 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"></head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+
+<link href="/stylesheets/forms/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<body>
+    <div class="nav">
+        <nav class="navbar navbar-inverse col-md-12 " style="border-radius:0px;">
+            <ul class="nav navbar-nav">
+
+                <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li class="active"><a href="#"> &nbsp;Leave Form</a></li>
+                <li class=""><a href="/od"> &nbsp;On-Duty Form</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+<form>
+    <div class="row" style="margin:0px;">
+        <div class="col-md-6 side-image" >
+        </div>
+        <div class="col-md-6 side-right" >
+            <h1 style="width:100%;text-align:center;"><b>LEAVE FORM</b></h1>
+            <form method="post" action="/leave/getinfo">
+                <div class="lv-form">
+                    <label for="date" class="col-md-6 col-form-label" style="padding:0px;">DATE </label>
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' id="tDate" readonly="readonly" class="form-control" name="dateofapply" placeholder="Today's Date"/>
+                                <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lv-form">
+                    <label for="from" class="col-md-6 col-form-label" style="padding:0px;">LEAVE PERIOD </br>From [Beginning of Leave Period]:</label>
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='date' id="t1" class="form-control" name="from" placeholder="Beginning of Leave Period"/>
+                                <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="to" class="col-md-6 col-form-label" style="padding:0px;">To [End of Leave Period] :</label>
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker3'>
+                                <input type='date' id="t2" class="form-control" name="to" placeholder="End of Leave Period"/>
+                                <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                            </div>
+                        </div>
+                    <div><input type=button value='Find Difference' onClick='show_difference()';></div>
+                        <div class="br-half"></div>
+
+                        <div class="lv-form">
+                            <label for="days-inv">DAYS INVOLVED </label>
+                            <input type="text" class="form-control" id="days_inv" name="daysinvolved" placeholder="Specify the No.of Working Days involved"></br>
+                        </div>
+
+                        <div class="lv-form">
+                            <label for="days-inv">DAYS ALREADY AVAILED </label>
+                            <input type="text" class="form-control" id="days_inv" name="daysavailed" placeholder="Specify the No of Days already availed"></br>
+                        </div>
+
+
+                        <div class="lv-form">
+                            <label for="reason">REASON </label>
+                            <textarea class="form-control" name="reason" id="reason" rows="3" placeholder="Reason For Your Absence"></textarea></br></br>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendance">ATTENDANCE % MAINTAINED IN THE CURRENT SEMESTER</label>
+                            <select class="form-control" id="attendance" name="attendance">
+                                <option>100</option>
+                                <option>99</option>
+                                <option>98</option>
+                                <option>97</option>
+                                <option>96</option>
+                                <option>95</option>
+                                <option>94</option>
+                                <option>93</option>
+                                <option>92</option>
+                                <option>91</option>
+                                <option>90</option>
+                                <option>89</option>
+                                <option>88</option>
+                                <option>87</option>
+                                <option>86</option>
+                                <option>85</option>
+                                <option>84</option>
+                                <option>83</option>
+                                <option>82</option>
+                                <option>81</option>
+                                <option>>80</option>
+                            </select>
+                            <br>
+
+                        <div class="lv-form"><center>
+                                <a href=""><input type="submit" value="SUBMIT" class="btn btn-success" style="font-family:courier;"> </a></center>
+                        </div>
+
+
+                    </div>
+                </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+     /*   $(document).ready(function() {
+            $(function () {
+                $('#datetimepicker1').datepicker();
+
+            });
+        });
+       */
+        function autoDate () {
+            var tDay = new Date();
+            var tMonth = tDay.getMonth()+1;
+            var tDate = tDay.getDate();
+            if ( tMonth < 10) tMonth = "0"+tMonth;
+            if ( tDate < 10) tDate = "0"+tDate;
+            document.getElementById("tDate").value = tMonth+"/"+tDate+"/"+tDay.getFullYear();
+        }
+
+
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
+        }
+        addLoadEvent(function() {
+            autoDate();
+        });
+
+        $('#fromdate', '#todate').change(function () {
+            var from = $('#fromdate').val();
+            var to = $('#todate').val();
+            $('#days_inv').val(from - to);
+            console.log(from - to);
+        });
+
+       //diff of two dates... alert(datediff("day", fromdate, todate));
+        /*$('#fromdate').add('#todate').change(function () {
+            console.log($('#fromdate').val());
+            var from = $('#fromdate').val("SDsdsds");
+            var to = $('#todate').val();
+            if(fromdate > todate){
+                $('#fromdate').css('border','1px solid red');
+                $('#todate').css('border','1px solid red');
+                console.log('sucess');
+            }
+            else{
+                $('#fromdate').css('border','1px solid grey');
+                $('#todate').css('border','1px solid grey');
+                console.log('fail'+fromdate+'   ' +todate);
+            }
+        });*/
+
+          /*  $(document).ready(function(){
+                $("#fromdate").datepicker({
+                    numberOfMonths: 2,
+                    onSelect: function(selected) {
+                        $("#todate").datepicker("option","minDate", selected)
+                    }
+                });
+                $("#todate").datepicker({
+                    numberOfMonths: 2,
+                    onSelect: function(selected) {
+                        $("#fromdate").datepicker("option","maxDate", selected)
+                    }
+                });
+
+            });*/
+
+
+     function show_month(month){
+
+         var month_name=new Array(12);
+         month_name[0]="Jan"
+         month_name[1]="Feb"
+         month_name[2]="March"
+         month_name[3]="April"
+         month_name[4]="May"
+         month_name[5]="June"
+         month_name[6]="July"
+         month_name[7]="Aug"
+         month_name[8]="Sept"
+         month_name[9]="Oct"
+         month_name[10]="Nov"
+         month_name[11]="Dec"
+
+         return month_name[month];
+
+     }
+     var from = new Date($('applied').val);
+     var to = new Date($('to').val)
+     $('days_inv').val =
+     function cal(chm,chy,month,year,bt,sub)
+         month=month + chm;
+         year=year + chy;
+         dt=new Date(year, month, 01);
+         var year=dt.getFullYear();
+         var display_month.getMonth();
+         var return_month=display_month +1;
+         var display_month_name=show_month(display_month);
+         var first_day=dt.getDay();
+
+         dt.setMonth(month+1,0);
+         var last_date=dt.getDate();
+
+         var dy=1;
+
+         var str1="<td><a href=# onclick=show_cal(0,-1," + display_month + "," + year + ",'" + bt + "','" + sub + "');><< </a> </td><td>   <a href=# onclick=show_cal(-1,0," + display_month + "," + year + ",'" + bt + "','"+ sub + "');><</a> </td><td> "+ display_month_name +"</td><td> " + year + " </td><td align=right><a href=# onclick=show_cal(1,0," + display_month + "," + year + ",'" + bt +"','" + sub + "');>></a> </td><td> <a href=# onclick=show_cal(0,1," + display_month + "," + year + ",'" + bt +"','" + sub + "');>>></a></td>";
+
+         var str = '';
+         str = "<table class='main'><tr> " + str1 + "  <td  align=right>";
+         str += " <a href=# onclick=\"close_cal('" + sub +"' );\";>X</a></td></tr>";
+         str +="<tr><th>Su</th><th>Mon</th><th>Tue</th><th>Wed</th>";
+         str +="<th>Thu</th><th>Fri</th><th>Sat</th></tr>";
+
+         for(i=0;i<=41;i++){
+             if((i%7)==0){str = str + "</tr><tr>";}
+             if((i>= first_day) && (dy<= last_date)){
+
+                 str = str + "<td id='"+ dy +"'><a href=# onclick=return_value(" + return_month + "," + dy + ","+ year + ",'"+ bt +"','" + sub + "');> "+ dy +"</a></td>";
+                 dy=dy+1;
+
+             }else {str = str + "<td>*</td>";}
+         }
+
+         str = str + "</tr></table>";
+
+         return str;
+     }
+
+     function show_cal(chm, chy,month,year,bt,sub) {
+         document.getElementById(sub).innerHTML = cal(chm,chy,month,year,bt,sub);
+         document.getElementById(sub).style.display = 'inline';
+     }
+
+     function close_cal(sub) {
+         document.getElementById(sub).style.display = 'none';
+     }
+     function start_cal(bt,sub) {
+         var dt_object=new Date();
+         var month=dt_object.getMonth();
+         var year=dt_object.getFullYear();
+         show_cal(0,0,month,year,bt,sub);
+     }
+
+     function return_value(month,dt,year,bt,sub){
+         document.getElementById(bt).value=month + '-' + dt + '-' + year   ;
+         close_cal(sub);
+     }
+
+     function show_difference(){
+         var t1=document.getElementById('t1').value
+         t1=t1.split('-');
+         var dt_t1=new Date(t1[2],t1[0],t1[1]);
+         var dt_t1_tm=dt_t1.getTime();
+
+         var t2=document.getElementById('t2').value
+         t2=t2.split('-');
+         var dt_t2=new Date(t2[2],t2[0],t2[1]);
+         var dt_t2_tm=dt_t2.getTime();
+
+         var one_day = 24*60*60*1000;
+         var diff_days=Math.abs((dt_t1_tm-dt_t2_tm)/one_day);
+         diff_days=Math.floor(diff_days);
+
+         document.getElementById('display').innerHTML=' Difference in Days = ' + diff_days ;
+         document.getElementById('display').style.display = 'inline';
+     }
+
+    </script>
+    </body>
+</html>

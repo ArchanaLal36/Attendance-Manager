@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Student Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/stylesheets/animate.css">
+    <link rel="stylesheet" href="/stylesheets/login/login-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body id="body">
+    <div id="student-login" class="container-fluid">
+        <div class="top">
+            <div class="stage">
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+            </div>
+            <h1 id="title" class="hidden"><span id="logo"><span></span></span></h1>
+        </div>
+        <div class="login-box animated fadeInUp">
+            <div class="box-header">
+                <h2>LOGIN</h2>
+            </div>
+            <form method="post" action="/authenticate/">
+                <label for="username">Username</label>
+                <br/>
+                <input type="text" id="username" name="username">
+                <br/>
+                <label for="password">Password</label>
+                <br/>
+                <input type="password" id="password" name="password">
+                <br/>
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="cse">
+            <a href="#"><p class="small">Powered by CSE</p></a>
+            </div>
+
+                <div>
+
+                <button id="switch-staff" class="button-toggle" >&nbsp</button>
+            </div>
+        </div>
+    </div>
+
+    <!--- <div id="staff-login" class="container-fluid" style="display: none;">
+        <div class="top">
+            <h1 id="title" class="hidden"><span id="logo"><span>LOGIN</span></span></h1>
+        </div>
+        <div class="login-box animated fadeInUp">
+            <div class="box-header">
+                <h2>LOGIN</h2>
+            </div>
+            <form action="/users/login/staff/">
+                <label for="username">Username</label>
+                <br/>
+                <input type="text" id="username">
+                <br/>
+                <label for="password">Password</label>
+                <br/>
+                <input type="password" id="password">
+                <br/>
+                <button type="submit">Sign In</button>
+            </form>
+            <a href="#"><p class="small">Forgot your password?</p></a>
+            <div>
+                <button id="switch-student" class="button-toggle" >&nbsp</button>
+            </div>
+        </div>
+    </div>-->
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#logo').addClass('animated fadeInDown');
+        $("input:text:visible:first").focus();
+    });
+    $('#username').focus(function() {
+        $('label[for="username"]').addClass('selected');
+    });
+    $('#username').blur(function() {
+        $('label[for="username"]').removeClass('selected');
+    });
+    $('#password').focus(function() {
+        $('label[for="password"]').addClass('selected');
+    });
+    $('#password').blur(function() {
+        $('label[for="password"]').removeClass('selected');
+    });
+        //$('#switch-staff').click(function(){
+        //$('#body').css('background','url("/images/5.jpg") no-repeat center fixed');
+        //$('#student-login').css('display','none');
+        //$('#staff-login').css('display','block');
+       //});
+        //$('#switch-student').click(function(){
+        //$('#body').css('background','url("/images/1.jpg") no-repeat center fixed');
+        //$('#staff-login').css('display','none');
+        //$('#student-login').css('display','block');
+        //});
+</script>
+
+</html>

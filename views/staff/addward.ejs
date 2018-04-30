@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"></head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href="/stylesheets/forms/style.css" rel="stylesheet" type="text/css" media="screen"/>
+
+</head>
+<style>
+#body {
+background: url("/images/bg/banner1.jpg") no-repeat center fixed;
+background-size: 100% 100%!important;
+font-size: 16px;
+font-family: 'Lato', sans-serif;
+font-weight: 300;
+margin: 0;
+color: #666;
+opacity: 100%;
+}
+
+</style>
+
+<body id="body">
+    <div class="nav">
+        <nav class="navbar navbar-inverse col-md-12 "style="border-radius:0px;">
+            <ul class="nav navbar-nav">
+                <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="/staffs"> &nbsp;Notifications</a></li>
+                <li class="active"><a href="#"> Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-md-12">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">Click to Register for a new Ward</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <form method="post" action="/staffs/wardgetinfo"><center>
+                                <input name="studname" class="input-text" type="text" placeholder="Enter Student's name" required></br></br>
+                                <input name="rollno" class="input-text" type="number" placeholder="Enter Roll No" required></br></br>
+                                <input name="email" class="input-text" type="text" placeholder="Enter E-mail" required></br></br>
+                                <input name="dept" class="input-text" type="text" placeholder="Enter Department" required></br></br>
+                                <input name="sem" class="input-text" type="number" placeholder="Enter Semester" required></br></br>
+                                <select name="tutor" class="dropdown-text">
+                                    <option value="a">Tutor</option>
+                                    <% formdata.forEach(function (t) { %>
+                                        <% if(t.designation == 'tutor'){ %>
+                                            <option value="a"><%= t.username %></option>
+                                        <% } %>
+                                    <% }) %>
+                                </select><br><br>
+                                <select name="academicco" class="dropdown-text">
+                                    <option value="a">Academic Co-ordinator</option>
+                                    <% formdata.forEach(function (t) { %>
+                                        <% if(t.designation == 'ac'){ %>
+                                            <option value="a"><%= t.username %></option>
+                                         <% } %>
+                                    <% }) %>
+                                </select><br><br>
+                                <!--<select class="dropdown-text" name="academicco">
+                                    <option value="a">Head of the Department</option>
+                                    <% formdata.forEach(function (t) { %>
+                                         <% if(t.designation == 'hod'){ %>
+                                            <option value="a"><%= t.username %></option>
+                                         <% } %>
+                                    <% }) %>
+                                </select></br><br>-->
+                                <select name="section" class="dropdown-text">
+                                    <option value="C">Section</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select><br><br>
+                                <input name="passwd" type="password" class="input-text" placeholder="Password" required></br></br>
+                                <input name="confpasswd" type="password" class="input-text" placeholder="Confirm Password" required></br></br>
+                                <input type="submit" value="CREATE" class="btn btn-info" style="font-family:courier;"></br></br>
+                            </center></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

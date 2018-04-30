@@ -1,0 +1,76 @@
+body {
+  padding: 0px;
+}
+.navbar-inverse{
+  background-color: rgba(0,0,0,0.5);
+}
+.banner-caption{
+  position: absolute;
+  top: 18%;
+  z-index: 1;
+  width: 90%;
+  left: 5%;
+  text-align: center;
+  color: #f9f2f4;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+.banner-h2{
+  font-weight: 500;
+  font-size: 50px;
+}
+.hanner.h3{
+  font-weight: 500;
+  font-size: 35px;
+}
+.banner-login{
+  position: absolute;
+  z-index: 1;
+  padding: 15px 50px;
+  background-color: rgba(0,158,227, 0.78);
+  border: none;
+  font-size: 20px;
+  top: 50%;
+  left:42%;
+  color: white;
+}
+.banner-login:hover{
+  background-color: white;
+  color:  rgba(0,158,227, 0.78);
+  -webkit-transition: all 0.5s;
+}
+.navbar-custom{
+  height: 80px;
+}
+.middle > * {
+  vertical-align: middle;
+}
+.nav li a{
+  padding: 25px 20px;
+  color: #f2dede!important;
+  font-size: 16px;
+  font-weight: 600;
+}
+.nav li a:hover{
+  color: #3b8fff!important;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.nav li:first-child a{
+  padding-right: 400px;
+  font-size: 20px;
+  color: #3b8fff!important;
+  font-weight: 600;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img{
+  height: 800px;
+  width: 100%;
+}
+.navbar-hover{
+  font-size: 20px;
+  font-weight: 700;
+  color: #3b8fff;
+  border: none;
+}

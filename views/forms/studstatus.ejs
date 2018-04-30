@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Status</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .status-form{
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .status-header{
+            padding:0px 10px 10px 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .table>tbody>tr>td{
+            border:none
+        }
+        .table>tbody>tr>td:first-child {
+            text-align: left;
+        }
+        #body {
+            background: url("/images/bg/banner1.jpg") no-repeat center fixed;
+            background-size: 100% 100%!important;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            margin: 0;
+            color: #666;
+            opacity: 100%;
+        }
+
+    </style>
+</head>
+<body id="body">
+<div class="nav">
+    <nav class="navbar navbar-inverse col-md-12 "style="border-radius:0px;">
+
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="#">Student Status</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="col-md-8 col-md-offset-2">
+
+    <% formdata.forEach(function (t) { %>
+    <div class="col-md-12 status-form
+                <% console.log(t.verified) %>
+                <% if(t.verified == 'accepted'){ %>
+                    bg-info
+                <% } %>
+                <% if(t.verified == 'unverified'||t.verified == 'tutor'||t.verified == 'ac'){ %>
+                    bg-warning
+                <% } %>
+                <% if(t.verified == 'rejected'){ %>
+                    bg-danger
+                <% } %>
+                ">
+        <div class="status-header">
+            <div>Form Id : <%= t._id %> [ OD-Form ]</div>
+        </div>
+        <% var from = new Date(t.from) %>
+        <% var to = new Date(t.to) %>
+        <% var applied = new Date(t.dateofapply) %>
+        <hr style="padding: 0px;margin: 0px;border-bottom:1px solid #999999">
+        <div class="status-info">
+            <div class="col-md-6">
+                <table class="table table-condensed" style="margin-bottom: 0px;">
+                    <tbody>
+                    <tr><td>From  </td><td class="col-md-7">: <%= from.toDateString() %></td></tr>
+                    <tr><td>To  </td><td>: <%= to.toDateString() %></td></tr>
+                    <tr><td>Applied On </td><td>: <%= applied.toDateString() %></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-condensed" style="margin-bottom: 0px;">
+                    <tbody>
+                    <tr><td>Tutor </td><td class="col-md-7">:
+
+                            <% if(t.verified == 'tutor'||t.verified == 'ac'||t.verified == 'hod'||t.verified == 'accepted'){ %>
+                                Verified
+
+                            <% } else if(t.verified == 'rejected'){  %>
+                                Rejected
+
+                            <% }else{ %>
+                                Unverified
+                            <%}%>
+                            <!--if(t.verified!='accepted'&&t.verified != 'ac'&&t.verified != 'hod'&&t.verified != 'tutor'&&t.verified != 'verified')-->
+                        </td></tr>
+                    <tr><td>Academic co-ordinator  </td><td>:
+
+                            <% if(t.verified == 'ac'||t.verified == 'hod'||t.verified == 'accepted'){ %>
+                            Verified
+                            <% } else{ %>
+                            Unverified
+                            <% } %>
+
+                        </td></tr>
+                    <tr><td>HOD </td><td>:
+
+                            <% if(t.verified == 'hod'||t.verified == 'accepted'){ %>
+                            Verified
+                            <% } else{ %>
+                            Unverified
+                            <% } %>
+
+                        </td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+</body>
+</html>
